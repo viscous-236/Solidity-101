@@ -35,9 +35,13 @@ contract SimpleStorage{
     //Static array
     // Person[2] public listofpeople;
 
+    // mapping every uint256 has a unique string associated with it
+    mapping(string => uint256) public nameToFavouriteNumber;
+
     function addPerson(string memory _name,uint256 _favouriteNumber) public {
         // Person memory newPerson=Person(_favouriteNumber,_name);
         // listOfPeople.push(newPerson);
         listOfPeople.push(Person(_favouriteNumber,_name));
+        nameToFavouriteNumber[_name]=_favouriteNumber;
     }
 }
