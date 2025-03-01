@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.18; // Starting line of the solidity specifying the version
-// the '^' specify the version equal to or greater than the specified will work
-// pragma solidity >=0.8.18 <0.9.0 any version between the two specified
+
+pragma solidity 0.8.18;
 
 contract SimpleStorage{
     // Basic types: boolean,uint,int,address,bytes
@@ -43,5 +42,14 @@ contract SimpleStorage{
         // listOfPeople.push(newPerson);
         listOfPeople.push(Person(_favouriteNumber,_name));
         nameToFavouriteNumber[_name]=_favouriteNumber;
+    }
+}
+
+contract StorageFactory{
+
+    SimpleStorage public simpleStorage;
+
+    function createSimpleStorageContract() public {
+        simpleStorage = new SimpleStorage();
     }
 }
