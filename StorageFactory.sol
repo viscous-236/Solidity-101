@@ -2,54 +2,27 @@
 
 pragma solidity 0.8.18;
 
-contract SimpleStorage{
-    // Basic types: boolean,uint,int,address,bytes
-    // bool hasFavouriteNumber=true;
-    // uint256 favouriteNumber=88;// uint256=uint
-    // int256 favouriteNum = -88;// int256=int
-    // address myAddress= 0x33C958aB751734E6722C91B3AE89DA026D5B2AF8;
-    // bytes32 favuriteAnimal="Dog";// max bytes 32
-    uint256 myFavouriteNumber; // 0
-
-    function store(uint256 _favouriteNumber) public {
-        myFavouriteNumber=_favouriteNumber;
-    }
-
-    function retrieve() public view returns(uint256){
-        return myFavouriteNumber;
-    }
-
-    // uint256[] listOfFavouriteNumbers;
-    struct Person{
-        uint256 favouriteNumber;
-        string name;
-    }
-
-    // Person public vai = Person(10,"Vai");
-    // Person public vai = Person({favouriteNumber: 10,name:"Vai"});
-
-    //Dynamic Array
-    Person[] public listOfPeople;
-
-    //Static array
-    // Person[2] public listofpeople;
-
-    // mapping every uint256 has a unique string associated with it
-    mapping(string => uint256) public nameToFavouriteNumber;
-
-    function addPerson(string memory _name,uint256 _favouriteNumber) public {
-        // Person memory newPerson=Person(_favouriteNumber,_name);
-        // listOfPeople.push(newPerson);
-        listOfPeople.push(Person(_favouriteNumber,_name));
-        nameToFavouriteNumber[_name]=_favouriteNumber;
-    }
-}
+import {SimpleStorage} from "./SimpleStorage.sol";
 
 contract StorageFactory{
 
-    SimpleStorage public simpleStorage;
+    SimpleStorage[] public listOfSimpleStorage;
 
     function createSimpleStorageContract() public {
-        simpleStorage = new SimpleStorage();
+        SimpleStorage newSimpleStorage = new SimpleStorage();
+        listOfSimpleStorage.push(newSimpleStorage);
+    }
+
+    function sfStore(uint256 _simpleStorageIndex,uint256 _newSimpleStorageNumber) public {
+        //Address
+        //ABI-Application Binary Interface
+        SimpleStorage mySimpleStorage = listOfSimpleStorage[_simpleStorageIndex];
+        mySimpleStorage.store(_newSimpleStorageNumber);
+    }
+
+    function sfGet(uint256 _simpleStorageIndex) public view returns(uint256){
+        // SimpleStorage mySimpleStorage = listOfSimpleStorage[_simpleStorageIndex];
+        // return mySimpleStorage.retrieve();
+        return listOfSimpleStorage[_simpleStorageIndex].retrieve();
     }
 }

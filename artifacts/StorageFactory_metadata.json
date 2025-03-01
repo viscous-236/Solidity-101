@@ -13,8 +13,14 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "simpleStorage",
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "listOfSimpleStorage",
 				"outputs": [
 					{
 						"internalType": "contract SimpleStorage",
@@ -23,6 +29,43 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_simpleStorageIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "sfGet",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_simpleStorageIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_newSimpleStorageNumber",
+						"type": "uint256"
+					}
+				],
+				"name": "sfStore",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -53,12 +96,20 @@
 		"remappings": []
 	},
 	"sources": {
-		"StorageFactory.sol": {
-			"keccak256": "0x3b785bd48b9b3243eb029b961cc37e8a8a37e5ae2821eb6716c8769cb0375321",
+		"SimpleStorage.sol": {
+			"keccak256": "0x6888d93c5536dedbe6a827a1f07efc441e8f639ac52012368845bdac27f2d5c8",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://92f45981a02bb88c830cfab36b1faab121cc9945cf88367a03b08f5e14825180",
-				"dweb:/ipfs/QmSqUH2xGVUqAPtQaJaCyarJaWmfHTZtinVC71yoPRvwHf"
+				"bzz-raw://d242740180d41748cc5e84b14d784e64c0a1b23c1191b06796ec93b4397db466",
+				"dweb:/ipfs/QmQzma8sioFySHMP1Nfj3L5MEWEGhskkThUNgKRadweqE4"
+			]
+		},
+		"StorageFactory.sol": {
+			"keccak256": "0x105fecc5638b02f54e5bf1772e7ba6a764a4562ce3fa624a53b22b910d073ea8",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a326dc11f8d8a3c5c91ef5f6e82546158970db5c586a4972a3e53e055f57a7ec",
+				"dweb:/ipfs/Qmds7UQ4wcinjD1initZ8wXLXtTzNvBB2pWW3LCnN7nktY"
 			]
 		}
 	},
