@@ -21,10 +21,11 @@ contract StorageFactory{
         listOfSimpleStorage[_simpleStorageIndex].store(_newSimpleStorageNumber);
     }
 
+
     function sfGet(uint256 _simpleStorageIndex) public view returns(uint256){
         // SimpleStorage mySimpleStorage = listOfSimpleStorage[_simpleStorageIndex];
         // return mySimpleStorage.retrieve();
         return listOfSimpleStorage[_simpleStorageIndex].retrieve();
     }
-    
+
 }
