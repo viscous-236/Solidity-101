@@ -16,8 +16,9 @@ contract StorageFactory{
     function sfStore(uint256 _simpleStorageIndex,uint256 _newSimpleStorageNumber) public {
         //Address
         //ABI-Application Binary Interface
-        SimpleStorage mySimpleStorage = listOfSimpleStorage[_simpleStorageIndex];
-        mySimpleStorage.store(_newSimpleStorageNumber);
+        // SimpleStorage mySimpleStorage = listOfSimpleStorage[_simpleStorageIndex];
+        // mySimpleStorage.store(_newSimpleStorageNumber);
+        listOfSimpleStorage[_simpleStorageIndex].store(_newSimpleStorageNumber);
     }
 
     function sfGet(uint256 _simpleStorageIndex) public view returns(uint256){
@@ -25,4 +26,5 @@ contract StorageFactory{
         // return mySimpleStorage.retrieve();
         return listOfSimpleStorage[_simpleStorageIndex].retrieve();
     }
+    
 }
