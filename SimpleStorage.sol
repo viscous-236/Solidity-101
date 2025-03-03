@@ -12,7 +12,7 @@ contract SimpleStorage{
     // bytes32 favuriteAnimal="Dog";// max bytes 32
     uint256 myFavouriteNumber; // 0
 
-    function store(uint256 _favouriteNumber) public {
+    function store(uint256 _favouriteNumber) public virtual {
         myFavouriteNumber=_favouriteNumber;
     }
 
