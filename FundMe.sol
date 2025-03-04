@@ -10,7 +10,5 @@ contract FundMe{
     function fund() public payable {
         require(msg.value > 1e18,"Didn't send enough ETH!"); // 1e18 = 1ETH
     }
-
-
     // function withdraw() public {}
 }
