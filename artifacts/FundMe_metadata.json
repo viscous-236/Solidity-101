@@ -11,6 +11,19 @@
 				"outputs": [],
 				"stateMutability": "payable",
 				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "myValue",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -41,11 +54,11 @@
 	},
 	"sources": {
 		"FundMe.sol": {
-			"keccak256": "0x10873cb4ac38fa222aa2dbc7e0e1864917c0c5a5ed0bfca65a44e884ea1db215",
+			"keccak256": "0x6d5f62c11a5712ecebd152c1eaf18316bf870a5f122fa42b0554bc10bae9ba52",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5493d0e0d90becdae96596699149874aed926a394047b5e2d74cfbd2487d4b0e",
-				"dweb:/ipfs/QmUq6T4DUbL4qWnYQ36G1mASH7gsSDGnavaeiamceVNTJY"
+				"bzz-raw://2af169731a65df627adf9ea3a8235191f5a2abe502cdf7794119d8b4b2cdfd2f",
+				"dweb:/ipfs/QmNpC3ajKYcBarQisUJbdNXQwYGCAJQk8M4xUzUeAmMM7U"
 			]
 		}
 	},
