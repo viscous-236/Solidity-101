@@ -10,10 +10,10 @@ import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interf
 
 contract FundMe{
 
-    uint256 minimumDollar = 5;
+    uint256 minimumDollar = 5e18;
 
     function fund() public payable {
-        require(msg.value > minimumDollar,"Didn't send enough ETH!"); // 1e18 = 1ETH
+        require(getConversionRate(msg.value) >= minimumDollar,"Didn't send enough Dollars!"); // 1e18 = 1ETH
     }
     // function withdraw() public {}
 
@@ -27,4 +27,10 @@ contract FundMe{
         // 2000.00000000
         return uint256(answer * 1e10);
     }   
+
+    function getConversionRate(uint256 ethAmount) public view returns(uint256){
+        uint256 ethPriceInUSD = getPrice();
+        uint256 totalEthPriceInUSD = (ethPriceInUSD * ethAmount) / 1e18;
+        return totalEthPriceInUSD;
+    }
 }
