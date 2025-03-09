@@ -21,8 +21,23 @@ contract FundMe{
     function fund() public payable {
         require(msg.value.getConversionRate() >= minimumDollar,"Didn't send enough Dollars!"); // 1e18 = 1ETH
         funders.push(msg.sender);// msg.sender is the default value to contain addresses 
-        addressToFundedAmount[msg.sender] = msg.value + addressToFundedAmount[msg.sender];
+        addressToFundedAmount[msg.sender] += msg.value;
     }
-    // function withdraw() public {}
+    function withdraw() public {
+        for (uint256 fundersIndex=0; fundersIndex<funders.length; fundersIndex++) 
+        {
+            address funder = funders[fundersIndex];
+            addressToFundedAmount[funder] = 0;
+        }
+        // reset the array
+        funders = new address[](0);
+        // withdraw the function
+        // transfer 
+        payable(msg.sender).transfer(address(this).balance);
+        // address refers to adress of the person belongi
+        // send  
+        // call
+         
+    }
 
 }
