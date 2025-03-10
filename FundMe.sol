@@ -40,12 +40,11 @@ contract FundMe{
         funders = new address[](0);
         // withdraw the function
         // transfer 
-        payable(msg.sender).transfer(address(this).balance);// address refers to adress of the person belongi
+        // payable(msg.sender).transfer(address(this).balance);// address refers to adress of the person belongi
         // send  
-        bool sendSuccessMsg = payable(msg.sender).send(address(this).balance);
-        require(sendSuccessMsg,"Send Falied");
+        // bool sendSuccessMsg = payable(msg.sender).send(address(this).balance);
+        // require(sendSuccessMsg,"Send Falied");
         // call
-        // (bool callSuccessMsg, bytes memory dataReturned) = payable(msg.sender).call{value: address(this).balance}("");
         (bool callSuccessMsg,) = payable(msg.sender).call{value: address(this).balance}("");
         require(callSuccessMsg,"Call Failed");
     }
