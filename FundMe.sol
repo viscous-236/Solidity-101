@@ -1,6 +1,3 @@
-// Gets fund from the user 
-// Withdraws Funds
-// Set a minimum funding value in USD
 // SPDX-License-Identifier:MIT
 
 pragma solidity ^0.8.18;
@@ -12,7 +9,7 @@ contract FundMe{
 
     using PriceConverter for uint256;
 
-    uint256 minimumDollar = 5e18; // we multiply it by e18 as the getConversionRate
+    uint256 minimumDollar = 5000000000000000000; // we multiply it by e18 as the getConversionRate
     // will give the result is e18 decimal points
 
     address[] public funders;// arrays of address of people who send the money
@@ -33,8 +30,9 @@ contract FundMe{
         // require(msg.sender == owner,"Must be owner"); add modifiuer instead
         for (uint256 fundersIndex=0; fundersIndex<funders.length; fundersIndex++) 
         {
-            address funder = funders[fundersIndex];
-            addressToFundedAmount[funder] = 0;
+            // address funder = funders[fundersIndex];
+            // addressToFundedAmount[funder] = 0;
+            addressToFundedAmount[funders[fundersIndex]]=0;
         }
         // reset the array
         funders = new address[](0);
