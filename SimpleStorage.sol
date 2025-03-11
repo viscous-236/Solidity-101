@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.18; // Starting line of the solidity specifying the version
+pragma solidity 0.8.24; // Starting line of the solidity specifying the version
 // the '^' specify the version equal to or greater than the specified will work
 // pragma solidity >=0.8.18 <0.9.0 any version between the two specified
 
