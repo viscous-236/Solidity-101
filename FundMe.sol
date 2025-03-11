@@ -4,25 +4,27 @@ pragma solidity ^0.8.18;
 
 import {PriceConverter} from "./PriceConverter.sol";
 
+error NotOwner();
+error CallFailed();
 
 contract FundMe{
 
     using PriceConverter for uint256;
 
-    uint256 minimumDollar = 5000000000000000000; // we multiply it by e18 as the getConversionRate
+    uint256 public constant MINIMUM_DOLLAR = 5000000000000000000; // we multiply it by e18 as the getConversionRate
     // will give the result is e18 decimal points
 
     address[] public funders;// arrays of address of people who send the money
     mapping(address funder => uint256 amountFunded) public addressToFundedAmount;
 
-    address public owner;
+    address public immutable i_owner;
 
     constructor() {
-        owner = msg.sender;
+        i_owner = msg.sender;
     }
 
     function fund() public payable {
-        require(msg.value.getConversionRate() >= minimumDollar,"Didn't send enough Dollars!"); // 1e18 = 1ETH
+        require(msg.value.getConversionRate() >= MINIMUM_DOLLAR,"Didn't send enough Dollars!"); // 1e18 = 1ETH
         funders.push(msg.sender);// msg.sender is the default value to contain addresses 
         addressToFundedAmount[msg.sender] += msg.value;
     }
@@ -44,10 +46,23 @@ contract FundMe{
         // require(sendSuccessMsg,"Send Falied");
         // call
         (bool callSuccessMsg,) = payable(msg.sender).call{value: address(this).balance}("");
-        require(callSuccessMsg,"Call Failed");
+        // require(callSuccessMsg,"Call Failed");
+        if (!callSuccessMsg) { revert CallFailed();}
     }
     modifier onlyOwner(){
-        require(msg.sender == owner,"Must be Owner");
+        // require(msg.sender == i_owner,"Must be Owner");
+        // _;
+        if (msg.sender != i_owner){
+            revert NotOwner();
+        }
         _;
+    }
+
+    receive() external payable {
+        fund();
+    }
+
+    fallback() external payable {
+        fund();
     }
 }
